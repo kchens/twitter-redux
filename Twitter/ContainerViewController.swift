@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  ContainerViewController.swift
 //  Twitter
 //
 //  Created by Kevin Chen on 10/7/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class ContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
