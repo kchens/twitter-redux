@@ -25,7 +25,17 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // View did appear vs/ viewDidLoa
+        loadTimelineView()
+
+        // Do any additional setup after loading the view.
+    }
+    
+
+    @IBAction func onTimelineTap(sender: AnyObject) {
+        loadTimelineView()
+    }
+    
+    func loadTimelineView() {
         let tweetsNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TweetsNavigationController") as UIViewController
         
         self.addChildViewController(tweetsNavigationController)
@@ -34,19 +44,19 @@ class ContainerViewController: UIViewController {
         self.detailContainerView.addSubview(tweetsNavigationController.view)
         tweetsNavigationController.didMoveToParentViewController(self)
 
-        // Do any additional setup after loading the view.
     }
     
-//    func selectViewControllers(viewController: UIViewController) {
-//        let tweetsNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TweetsNavigationController") as UIViewController
-//        
-//        self.addChildViewController(viewController)
-//        viewController.view.frame = self.detailContainerView.bounds
-//        viewController.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-//        self.detailContainerView.addSubview(viewController.view)
-//        viewController.didMoveToParentViewController(self)
-//    }
-
+    @IBAction func onProfileTap(sender: AnyObject) {
+        let profileViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ProfileViewController") as UIViewController
+        
+        self.addChildViewController(profileViewController)
+        profileViewController.view.frame = self.detailContainerView.bounds
+        profileViewController.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        self.detailContainerView.addSubview(profileViewController.view)
+        profileViewController.didMoveToParentViewController(self)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
