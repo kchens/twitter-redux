@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tweetUserImageView: UIImageView!
@@ -15,7 +16,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var tweetUserScreenName: UILabel!
     @IBOutlet weak var tweetCreatedAtLabel: UILabel!
     @IBOutlet weak var tweetDescriptionLabel: UILabel!
-
+    
     var tweet: Tweet! {
         didSet {
             self.tweetUserImageView.setImageWithURL(NSURL(string: (tweet.user?.profileImageUrl)!))
@@ -26,6 +27,10 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
     
+    @IBAction func onProfilePicTap(sender: AnyObject) {
+        print("yo")
+        print("\(tweet.user!)")
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         

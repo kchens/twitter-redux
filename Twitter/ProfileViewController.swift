@@ -8,11 +8,24 @@
 
 import UIKit
 
+
+
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var userBannerImageView: UIImageView!
+    @IBOutlet weak var userProfileImageView: UIImageView!
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userScreenNameLabel: UILabel!
+
+    @IBOutlet weak var userTweetCountLabel: UILabel!
+    @IBOutlet weak var userFollowingCountLabel: UILabel!
+    @IBOutlet weak var userFollowersCountLabel: UILabel!
+    
+    var profileUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +34,17 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setUserDelegate(setUser user: User) {
+        profileUser = user
+        
+        userBannerImageView.setImageWithURL(NSURL(string: profileUser.profileBannerUrl!))
+        userProfileImageView.setImageWithURL(NSURL(string: profileUser.profileImageUrl!))
+        userNameLabel.text       = profileUser.name
+        userScreenNameLabel.text = profileUser.screenname
+        userTweetCountLabel.text = "\(profileUser.tweetsCount!)"
+        userFollowersCountLabel.text = "\(profileUser.followersCount!)"
+        userFollowingCountLabel.text = "\(profileUser.followingCount!)"
+    }
 
     /*
     // MARK: - Navigation

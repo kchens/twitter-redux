@@ -20,7 +20,7 @@ class ContainerViewController: UIViewController {
 //    ]
     
     override func viewDidLayoutSubviews() {
-        scrollView.setContentOffset(CGPoint(x: 80,y: 0), animated: false)
+        defaultMenuPosition()
     }
     
     override func viewDidLoad() {
@@ -35,7 +35,12 @@ class ContainerViewController: UIViewController {
         loadTimelineView()
     }
     
+    func defaultMenuPosition() {
+        scrollView.setContentOffset(CGPoint(x: 80,y: 0), animated: false)
+    }
+    
     func loadTimelineView() {
+        defaultMenuPosition()
         let tweetsNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TweetsNavigationController") as UIViewController
         
         self.addChildViewController(tweetsNavigationController)
@@ -47,13 +52,15 @@ class ContainerViewController: UIViewController {
     }
     
     @IBAction func onProfileTap(sender: AnyObject) {
-        let profileViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ProfileViewController") as UIViewController
+        let profileViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         
         self.addChildViewController(profileViewController)
         profileViewController.view.frame = self.detailContainerView.bounds
         profileViewController.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.detailContainerView.addSubview(profileViewController.view)
         profileViewController.didMoveToParentViewController(self)
+        profileViewController.setUserDelegate(setUser: User.currentUser!)
+        
     }
     
     

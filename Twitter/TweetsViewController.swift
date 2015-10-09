@@ -86,7 +86,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             
             let tweetDetailsViewController = segue.destinationViewController as! TweetDetailsViewController
             tweetDetailsViewController.tweet = tweet
-        }
+        } //else if segue.identifier == "TweetsToProfileSegue" {
+//            let user = sender as! User
+//            
+//            let profileVC = segue.destinationViewController as! ProfileViewController
+//            profileVC.setUserDelegate(setUser: user)
+//        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
