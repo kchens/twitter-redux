@@ -56,6 +56,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
         
     }
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tweets != nil {
@@ -64,11 +65,26 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             return 0
         }
     }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetTableViewCell", forIndexPath: indexPath) as! TweetTableViewCell
         cell.tweet = self.tweets?[indexPath.row]
+        
+        cell.profileButton!.tag = indexPath.row
+        cell.profileButton!.addTarget(self, action: "tappedProfile:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+//        cell.button.addOnTapGestureRecognizer -- pass in the indexPath into the method. Pass in a method that will take in TweetsViewController Class.
+        // That will performSEgue
+        
         return cell
+    }
+    
+    func tappedProfile( button: UIButton ) {
+        print("tappedProfile")
+        print("\(button.tag)")
+        
+        self.performSegueWithIdentifier("TweetToProfileSegue", sender: button)
     }
     
     /*
@@ -86,16 +102,19 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             
             let tweetDetailsViewController = segue.destinationViewController as! TweetDetailsViewController
             tweetDetailsViewController.tweet = tweet
-        } //else if segue.identifier == "TweetsToProfileSegue" {
-//            let user = sender as! User
-//            
-//            let profileVC = segue.destinationViewController as! ProfileViewController
+        } else if segue.identifier == "TweetToProfileSegue" {
+            let button = sender as! UIButton
+            let indexPath = button.tag
+            let tweet = tweets![indexPath]
+            let user = tweet.user!
+            
+            let profileVC = segue.destinationViewController as! ProfileViewController
+            profileVC.profileUser = user
 //            profileVC.setUserDelegate(setUser: user)
-//        }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        }
+//         Get the new view controller using segue.destinationViewController.
+//         Pass the selected object to the new view controller.
     }
-    
     func tweetComposeViewControllerDelegate(tweetComposeViewController: TweetComposeViewController, didComposeTweet tweet: Tweet) {
         // insert tweet into tweets
         // reload tableView

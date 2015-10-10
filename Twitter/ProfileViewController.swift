@@ -27,6 +27,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+//        userBannerImageView.setImageWithURL(NSURL(string: profileUser.profileBannerUrl!)!)
+//        userProfileImageView.setImageWithURL(NSURL(string: profileUser.profileImageUrl!)!)
+        if profileUser != nil {
+            setUserDelegate(setUser: profileUser)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +42,8 @@ class ProfileViewController: UIViewController {
     func setUserDelegate(setUser user: User) {
         profileUser = user
         
-        userBannerImageView.setImageWithURL(NSURL(string: profileUser.profileBannerUrl!))
-        userProfileImageView.setImageWithURL(NSURL(string: profileUser.profileImageUrl!))
+        userBannerImageView.setImageWithURL(NSURL(string: profileUser.profileBannerUrl!)!)
+        userProfileImageView.setImageWithURL(NSURL(string: profileUser.profileImageUrl!)!)
         userNameLabel.text       = profileUser.name
         userScreenNameLabel.text = profileUser.screenname
         userTweetCountLabel.text = "\(profileUser.tweetsCount!)"

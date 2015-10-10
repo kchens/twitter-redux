@@ -60,6 +60,7 @@ class ContainerViewController: UIViewController {
         self.detailContainerView.addSubview(profileViewController.view)
         profileViewController.didMoveToParentViewController(self)
         profileViewController.setUserDelegate(setUser: User.currentUser!)
+//        profileViewController.profileUser = User.currentUser!
         
     }
     

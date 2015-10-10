@@ -184,10 +184,6 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWn-NH-fqW">
                                                     <rect key="frame" x="17" y="20" width="60" height="59"/>
-                                                    <connections>
-                                                        <action selector="onProfilePicTap:" destination="OaK-TZ-Dkb" eventType="touchUpInside" id="X3p-01-0q2"/>
-                                                        <segue destination="eOz-GH-cvM" kind="show" identifier="TweetsToProfileSegue" id="3au-rp-D7o"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -224,6 +220,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="profileButton" destination="YWn-NH-fqW" id="a9l-1o-B9q"/>
                                             <outlet property="tweetCreatedAtLabel" destination="CaB-eQ-swA" id="XhW-un-fOz"/>
                                             <outlet property="tweetDescriptionLabel" destination="tZ5-ei-kTm" id="bvf-ti-hTg"/>
                                             <outlet property="tweetUserImageView" destination="ecV-5h-lEM" id="eLd-rB-fgB"/>
@@ -262,6 +259,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="DEw-5z-4iG" id="jMI-fM-aI4"/>
+                        <segue destination="eOz-GH-cvM" kind="show" identifier="TweetToProfileSegue" id="9FY-qP-n0Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loU-iA-rQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -666,7 +664,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="1807" y="1116"/>
+            <point key="canvasLocation" x="2066" y="1074"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
