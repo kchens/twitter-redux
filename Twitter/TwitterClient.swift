@@ -8,8 +8,8 @@
 
 import UIKit
 
-let twitterConsumerKey = "zdsaIamkvMj8ycJjSrTyNcN8g"
-let twitterConsumerSecret = "OErcbsbgMXg3YGQjI3J1WaQidMbMKlHbkEtvkWaINwM7zSW6NA"
+let twitterConsumerKey = "b7Bje9diXIa6Pt42oTGPVDDbE"
+let twitterConsumerSecret = "TvqMCZF9iGA0pQ8Ua9lB7500PMejBPYohB6IrllJnEpPyRjs4I"
 let twitterBaseURL = NSURL(string: "https://api.twitter.com")
 
 class TwitterClient: BDBOAuth1RequestOperationManager {
@@ -75,7 +75,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil,
                     success: { (operation, response) -> Void in
                         print("user: \(response)")
-                        var user = User(dictionary: response as! NSDictionary)
+                        let user = User(dictionary: response as! NSDictionary)
                         User.currentUser = user
                         print("user is named \(user.name!)")
                         self.loginCompletion?(user: user, error: nil)

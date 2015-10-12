@@ -35,11 +35,11 @@ class ContainerViewController: UIViewController {
         loadTimelineView()
     }
     
-    func defaultMenuPosition() {
+    private func defaultMenuPosition() {
         scrollView.setContentOffset(CGPoint(x: 80,y: 0), animated: false)
     }
     
-    func loadTimelineView() {
+    private func loadTimelineView() {
         defaultMenuPosition()
         let tweetsNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TweetsNavigationController") as UIViewController
         
@@ -54,16 +54,15 @@ class ContainerViewController: UIViewController {
     @IBAction func onProfileTap(sender: AnyObject) {
         let profileViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         
+        profileViewController.profileUser = User.currentUser!
+        
         self.addChildViewController(profileViewController)
         profileViewController.view.frame = self.detailContainerView.bounds
         profileViewController.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.detailContainerView.addSubview(profileViewController.view)
         profileViewController.didMoveToParentViewController(self)
-        profileViewController.setUserDelegate(setUser: User.currentUser!)
-//        profileViewController.profileUser = User.currentUser!
-        
+//        profileViewController.setUser(user: User.currentUser!)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

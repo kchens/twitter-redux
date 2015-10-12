@@ -98,7 +98,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    private func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         // When user starts editing text, make the text empty.
         if tweet == nil {
             if tweetBoxTextView.text != nil {
@@ -109,7 +109,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
-    func textViewDidChange(textView: UITextView) {
+    private func textViewDidChange(textView: UITextView) {
         // Reset a tweet character count to the characters here.
         let characterCount = 140 - tweetBoxTextView.text.characters.count
         if characterCount < 0 {

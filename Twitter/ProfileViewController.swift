@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController {
 //        userBannerImageView.setImageWithURL(NSURL(string: profileUser.profileBannerUrl!)!)
 //        userProfileImageView.setImageWithURL(NSURL(string: profileUser.profileImageUrl!)!)
         if profileUser != nil {
-            setUserDelegate(setUser: profileUser)
+            setUser(user: profileUser)
         }
     }
 
@@ -39,16 +39,20 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setUserDelegate(setUser user: User) {
+    private func setUser(user user: User) {
         profileUser = user
         
-        userBannerImageView.setImageWithURL(NSURL(string: profileUser.profileBannerUrl!)!)
-        userProfileImageView.setImageWithURL(NSURL(string: profileUser.profileImageUrl!)!)
+        userBannerImageView.setImageWithURL(NSURL(string: profileUser.profileBannerUrl!))
+        userProfileImageView.setImageWithURL(NSURL(string: profileUser.profileImageUrl!))
         userNameLabel.text       = profileUser.name
         userScreenNameLabel.text = profileUser.screenname
         userTweetCountLabel.text = "\(profileUser.tweetsCount!)"
         userFollowersCountLabel.text = "\(profileUser.followersCount!)"
         userFollowingCountLabel.text = "\(profileUser.followingCount!)"
+    }
+    
+    func createProfileDescription() {
+        
     }
 
     /*

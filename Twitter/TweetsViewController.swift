@@ -27,14 +27,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         refreshLoad()
     }
     
-    func setupRefresh() {
+    private func setupRefresh() {
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: "refreshLoad", forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
     }
     
-    func refreshLoad() {
+    private func refreshLoad() {
         TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
@@ -110,7 +110,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             
             let profileVC = segue.destinationViewController as! ProfileViewController
             profileVC.profileUser = user
-//            profileVC.setUserDelegate(setUser: user)
+//            profileVC.setUser(user: user)
         }
 //         Get the new view controller using segue.destinationViewController.
 //         Pass the selected object to the new view controller.

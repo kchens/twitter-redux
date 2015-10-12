@@ -41,7 +41,7 @@ class Tweet: NSObject {
         return tweets
     }
     
-    func formatTimeElapsed(sinceDate: NSDate) -> String {
+    private func formatTimeElapsed(sinceDate: NSDate) -> String {
         let formatter = NSDateComponentsFormatter()
         formatter.unitsStyle = NSDateComponentsFormatterUnitsStyle.Abbreviated
         formatter.collapsesLargestUnit = true
