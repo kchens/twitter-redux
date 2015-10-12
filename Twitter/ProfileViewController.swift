@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userFollowingCountLabel: UILabel!
     @IBOutlet weak var userFollowersCountLabel: UILabel!
     
+    @IBOutlet weak var profileDescriptionView: UIView!
+    
     var profileUser: User!
     
     override func viewDidLoad() {
@@ -50,9 +52,18 @@ class ProfileViewController: UIViewController {
         userFollowersCountLabel.text = "\(profileUser.followersCount!)"
         userFollowingCountLabel.text = "\(profileUser.followingCount!)"
     }
-    
-    func createProfileDescription() {
+
+    @IBAction func onProfileDescriptionSwipe(swipe: UIPanGestureRecognizer) {
+        let point = swipe.locationInView(profileDescriptionView)
+
         
+        if swipe.state == UIGestureRecognizerState.Began {
+            print("began")
+        } else if swipe.state == UIGestureRecognizerState.Changed {
+            print("changed")
+        } else if swipe.state == UIGestureRecognizerState.Ended {
+            print("ended")
+        }
     }
 
     /*

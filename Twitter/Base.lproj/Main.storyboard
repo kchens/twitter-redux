@@ -529,7 +529,7 @@
                                     <constraint firstAttribute="height" constant="180" id="dWX-wU-6r3"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfy-Hz-JN2">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ProfileDescription" translatesAutoresizingMaskIntoConstraints="NO" id="Zfy-Hz-JN2" userLabel="ProfileDescription">
                                 <rect key="frame" x="0.0" y="198" width="600" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saB-Bv-hzX">
@@ -546,6 +546,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="zlT-bv-6c0" secondAttribute="bottom" constant="8" id="BwE-Ap-afs"/>
                                     <constraint firstItem="zlT-bv-6c0" firstAttribute="top" relation="lessThanOrEqual" secondItem="Zfy-Hz-JN2" secondAttribute="top" constant="5" id="N4N-Ww-eCe"/>
@@ -560,6 +561,9 @@
                                         <exclude reference="BwE-Ap-afs"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fXs-xb-NM5" appends="YES" id="IgE-3h-gvc"/>
+                                </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Inc-bA-LH2">
                                 <rect key="frame" x="240" y="48" width="120" height="120"/>
@@ -665,6 +669,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="profileDescriptionView" destination="Zfy-Hz-JN2" id="LDE-O8-CpB"/>
                         <outlet property="userBannerImageView" destination="nHY-Hg-dsM" id="EKb-CT-6qU"/>
                         <outlet property="userFollowersCountLabel" destination="j33-lo-gmC" id="azL-fm-268"/>
                         <outlet property="userFollowingCountLabel" destination="73L-Ir-mn0" id="xDd-DS-QBF"/>
@@ -682,6 +687,11 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="fXs-xb-NM5">
+                    <connections>
+                        <action selector="onProfileDescriptionSwipe:" destination="eOz-GH-cvM" id="Mvf-8p-xwM"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2066" y="1074"/>
         </scene>
